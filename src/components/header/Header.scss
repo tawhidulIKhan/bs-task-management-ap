@@ -1,0 +1,30 @@
+.header{
+  box-shadow: 0px 10px 10px 10px rgba(0,0,0,.05);
+  padding: 10px 0;
+  &__content{
+    display: flex;
+    justify-content: space-between;
+  }
+  &__left{
+    display: flex;
+  }
+  &__right{
+    display: flex;
+    align-items: center;
+  }
+  &__menu{
+    list-style: none;
+    padding: 0;
+    margin:0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    &__item{
+      font-style: normal;
+      color: #000;
+      text-decoration: none;
+      padding: 16px 0;
+      display: inline-flex;
+    }
+  }
+}
