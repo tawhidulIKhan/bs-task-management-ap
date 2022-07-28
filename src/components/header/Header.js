@@ -22,6 +22,10 @@ export default function Header() {
                 <Link className='header__menu__item' to="/members">Members</Link>
               </li>
             </ul>
+            <div className='header__profile'>
+              <div>Hello, <span className='header__profile__name'>John doe</span></div>
+              <Link className='header__profile__logout' to="logout">Logout</Link>
+            </div>
           </div>
         </div>
       </div>
