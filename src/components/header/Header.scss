@@ -1,6 +1,7 @@
 .header{
   box-shadow: 0px 10px 10px 10px rgba(0,0,0,.05);
   padding: 10px 0;
+  background: #fff;
   &__content{
     display: flex;
     justify-content: space-between;
@@ -44,6 +45,7 @@
     &__logout{
       color: var(--primary-color);
       text-decoration: none;
+
     }
   }
 }
