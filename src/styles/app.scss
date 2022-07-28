@@ -22,6 +22,10 @@ h1,h2,h3,h4,h5,h6{
   width: calc(100vw - 200px);
   margin: auto;
 }
+.container-xs{
+  width: calc(60vw - 200px);
+  margin: auto;
+}
 
 .input{
   &-field{
@@ -31,6 +35,14 @@ h1,h2,h3,h4,h5,h6{
   border-radius: 5px;
   color: #959595;
   }
+    &-select{
+  display: block;
+  border: 1px solid #eee;
+  padding: 10px 10px;
+  border-radius: 5px;
+  color: #959595;
+  }
+
 }
 
 .btn{
@@ -89,4 +101,14 @@ h1,h2,h3,h4,h5,h6{
   padding: 15px 0px;
   font-size: 14px;
  }
+}
+
+.form{
+  &__item{
+    display: flex;
+    flex-direction: column;
+    &__label{
+      margin-bottom: 10px;
+    }
+  } 
 }

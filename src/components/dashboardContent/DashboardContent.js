@@ -2,6 +2,10 @@ import React from 'react'
 
 export default function DashboardContent() {
   return (
-    <div>Content</div>
+    <div>
+      <div className='container'>
+        kk
+      </div>
+    </div>
   )
 }
