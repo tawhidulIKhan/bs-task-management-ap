@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import Logo from '../../components/logo/Logo';
 import MenuProfile from '../../components/menuProfile/MenuProfile';
 import endpoints from '../../config/endpoints';
 import './Header.scss';
@@ -9,7 +10,7 @@ export default function Header(props) {
       <div className='container'>
         <div className='header__content'>
           <div className='header__left'>
-            <img src="https://via.placeholder.com/150x50" alt="Logo" />
+            <Logo />
           </div>
           <div className='header__right'>
             <ul className='header__menu'>
