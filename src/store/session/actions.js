@@ -7,3 +7,6 @@ export const setSession = (payload) => ({
 
 export const isAuthenticated = (state) => 
     state['session'].token !== '';
+
+export const getSessionToken = (state) => 
+    state['session'].token
