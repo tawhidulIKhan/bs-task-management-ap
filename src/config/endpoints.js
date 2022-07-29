@@ -15,6 +15,8 @@ const endpoints = {
   MEMBERS: "/members",
   MEMBERS_API: `${API_ENDPOINT}/members`,
   MEMBERS_DETAILS: "/members/:id",
+  MEMBERS_DETAILS_API:  `${API_ENDPOINT}/members/:id`,
+  MEMBERS_UPDATE_API:  `${API_ENDPOINT}/members/:id`,
   MEMBERS_CREATE: "/members/create",
   MEMBERS_CREATE_API: `${API_ENDPOINT}/members/create`,
 }
