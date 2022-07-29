@@ -74,13 +74,15 @@ export default function TaskForm(props) {
   
   const deleteTask = async (ev) => {
     ev.preventDefault();
-    try {
-      await TaskManager.remove({
-        id: task.id
-      });
-      navigate(endpoints.TASKS);
-    } catch (error) {
-      console.error(error)    
+    if(window.confirm("Are you sure to delete")){
+      try {
+        await TaskManager.remove({
+          id: task.id
+        });
+        navigate(endpoints.TASKS);
+      } catch (error) {
+        console.error(error)    
+      }  
     }
   }
 
