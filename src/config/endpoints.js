@@ -6,6 +6,7 @@ const endpoints = {
   LOGIN_API: `${API_ENDPOINT}/login`,
   DASHBOARD: '/',
   TASKS: "/tasks",
+  TASKS_API: `${API_ENDPOINT}/tasks`,
   TASKS_CREATE: "/tasks/create",
   TASKS_CREATE_API: `${API_ENDPOINT}/tasks/create`,
   MEMBERS: "members",
