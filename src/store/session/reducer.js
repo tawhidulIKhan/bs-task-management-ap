@@ -1,4 +1,4 @@
-import { SET_SESSION_TOKEN } from './actions';
+import { SET_SESSION } from './actions';
 const initialState = {
   user:null,
   token:''
@@ -6,13 +6,14 @@ const initialState = {
 
 export default function reducer(
   state = initialState,
-  action
+  {payload, type}
 ){
-  switch (action.type) {
-    case SET_SESSION_TOKEN:
+  switch (type) {
+    case SET_SESSION:
       return {
         ...state,
-        token: action.token,
+        token: payload.token,
+        user: payload.user
       };
     default:
       return state;
