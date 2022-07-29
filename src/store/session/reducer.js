@@ -1,4 +1,4 @@
-import { SET_SESSION } from './actions';
+import { RESET_SESSION, SET_SESSION } from './actions';
 const initialState = {
   user:null,
   token:''
@@ -15,7 +15,13 @@ export default function reducer(
         token: payload.token,
         user: payload.user
       };
-    default:
+    case RESET_SESSION:
+      return {
+        ...state,
+        token: '',
+        user: null
+      };
+      default:
       return state;
   }
 }
