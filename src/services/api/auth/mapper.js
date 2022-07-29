@@ -6,5 +6,8 @@
 
  export const mapAuthFromServerToClient = (data) => ({
     token: data.token,
-    user: data.user
+    user: {
+        ...data.user,
+        username: data.user.name
+    }
 })
