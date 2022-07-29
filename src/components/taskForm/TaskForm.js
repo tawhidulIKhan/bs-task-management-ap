@@ -1,8 +1,23 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
+import MemberManager from '../../services/api/members/request';
 import './TaskForm.scss';
 
 export default function TaskForm() {
+  const [members, setMembers] = useState([]);
+  useEffect(() => {
+    fetchMembers();
+  }, [])
+
+  const fetchMembers = async () => {
+    try {
+      const response = await MemberManager.all();
+      setMembers(response.data);
+    } catch (error) {
+      console.error(error);
+    }
+  }
+  
   return (
     <div className='taskform form'>
       <div className='container-xs'>
@@ -25,10 +40,7 @@ export default function TaskForm() {
             <p className="form__item">
               <label className='form__item__label'>Members</label>
               <select className='input-select'>
-                <option>John</option>
-                <option>Jessica</option>
-                <option>David</option>
-                <option>Adil</option>
+                {members.map(member => <option key={member.id}>{member.name}</option>)}
               </select>
             </p>
             <button className='btn--primary'>Create</button>
