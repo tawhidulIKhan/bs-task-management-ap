@@ -20,8 +20,24 @@ const all = async (request) => {
   }
 }
 
+const create = async (request) => {
+  const response = await axios({
+   method: 'post',
+   url:endpoints.MEMBERS_CREATE_API,
+   data: {
+    name: request.name,
+    email: request.email || '',
+   },
+   headers: getAxiosHeader()
+  });
+   return {
+     data: response.data,
+   }
+ }
+
 const MemberManager = {
-  all
+  all,
+  create
 }
 
 export default MemberManager;
