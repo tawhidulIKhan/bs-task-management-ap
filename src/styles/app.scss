@@ -25,17 +25,21 @@ h1,h2,h3,h4,h5,h6{
 .input{
   &-field{
   display: block;
-  border: 1px solid #eee;
+  border: 1px solid rgb(199, 197, 197);
   padding: 10px 10px;
   border-radius: 5px;
   color: #959595;
+  &::placeholder {
+    font-size: 14px;
+  }
   }
     &-select{
   display: block;
-  border: 1px solid #eee;
+  border: 1px solid rgb(199, 197, 197);
   padding: 10px 10px;
   border-radius: 5px;
   color: #959595;
+  background: #fff;
   }
 
 }
@@ -127,6 +131,12 @@ h1,h2,h3,h4,h5,h6{
     flex-direction: column;
     &__label{
       margin-bottom: 10px;
+      font-size: 14px;
+      color: #000;
+    }
+    &__required{
+      color: var(--danger-color);
+      transform: translateY(5px);
     }
   } 
 }
