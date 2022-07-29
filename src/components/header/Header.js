@@ -1,5 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom';
+import endpoints from '../../config/endpoints';
 import './Header.scss';
 
 export default function Header() {
@@ -13,13 +14,13 @@ export default function Header() {
           <div className='header__right'>
             <ul className='header__menu'>
               <li>
-                <Link className='header__menu__item' to="/dashboard">Dashboard</Link>
+                <Link className='header__menu__item' to={endpoints.DASHBOARD}>Dashboard</Link>
               </li>
               <li>
-                <Link className='header__menu__item' to="/tasks">Tasks</Link>
+                <Link className='header__menu__item' to={endpoints.TASKS}>Tasks</Link>
               </li>
               <li>
-                <Link className='header__menu__item' to="/members">Members</Link>
+                <Link className='header__menu__item' to={endpoints.MEMBERS}>Members</Link>
               </li>
             </ul>
             <div className='header__profile'>
