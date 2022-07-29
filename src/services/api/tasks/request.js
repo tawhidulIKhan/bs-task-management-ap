@@ -1,4 +1,4 @@
-import { mapTasksFromServerToClient, mapTaskFromServerToClient } from './mapper';
+import { mapTasksFromServerToClient, mapTaskFromServerToClient, mapMeta } from './mapper';
 import axios from 'axios';
 import endpoints from '../../../config/endpoints';
 import { getAxiosHeader } from '../../../utils/helpers';
@@ -11,12 +11,14 @@ const all = async (request) => {
   const response = await axios({
     method: 'get',
     url:endpoints.TASKS_API,
-    data: request,
+    params: {
+      page: request.currentPage
+    },
     headers: getAxiosHeader()
    });
    return {
     data: mapTasksFromServerToClient(response.data.data),
-    meta: null
+    meta: mapMeta(response.data.meta)
   }
 }
 
