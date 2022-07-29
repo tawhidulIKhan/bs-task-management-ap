@@ -2,11 +2,14 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import endpoints from '../../config/endpoints';
-import { getSessionUser } from '../../store/session/actions';
+import { getSessionUser, resetSession } from '../../store/session/actions';
 import './Header.scss';
 
 function Header(props) {
-  const { user } = props;
+  const { user, resetSessionAction } = props;
+  const logout = () => {
+    resetSessionAction();
+  }
   return (
     <div className='header'>
       <div className='container'>
@@ -28,7 +31,7 @@ function Header(props) {
             </ul>
             <div className='header__profile'>
               <div>Hello, <span className='header__profile__name'>{user.username}</span></div>
-              <Link className='header__profile__logout' to="logout">Logout</Link>
+              <button onClick={logout} className='header__profile__logout' to="logout">Logout</button>
             </div>
           </div>
         </div>
@@ -41,4 +44,8 @@ const mapStateToProps = (state) => ({
   user: getSessionUser(state)
 })
 
-export default connect(mapStateToProps)(Header)
+const mapDispatchToProps = (dispatch) => ({
+  resetSessionAction: () => dispatch(resetSession())
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Header)
