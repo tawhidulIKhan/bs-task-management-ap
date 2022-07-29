@@ -1,9 +1,8 @@
-import { configureStore } from '@reduxjs/toolkit'
-import storageManager from '../services/storage.js';
+import { configureStore } from '@reduxjs/toolkit';
+import { combineReducers } from "redux";
+import { persistReducer } from 'redux-persist';
+import storage from 'redux-persist/lib/storage';
 import SessionReducer from './session/reducer.js';
-import { persistStore, persistReducer } from 'redux-persist'
-import storage from 'redux-persist/lib/storage'
-import {combineReducers} from "redux"; 
 const reducers = combineReducers({
   session: SessionReducer
 });
