@@ -7,7 +7,7 @@ export default function DashboardContent() {
   return (
     <div className='dashboard__page'>
       <div className='container'>
-        <div className='page__content'>
+        <div className=''>
           <div className='dashboard__page__content__wrapper'>
             <button className='dashboard__page__tilebtn'>
               <Link to={endpoints.TASKS}>Tasks</Link>
