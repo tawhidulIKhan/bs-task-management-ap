@@ -41,7 +41,9 @@ export default function TaskList() {
           <tbody>
             {tasks.map(task => (
               <tr key={task.id}>
-                <td>{task.title}</td>
+                <td>
+                  <Link to={endpoints.TASKS_DETAILS.replace(":id", task.id)}>{task.title}</Link>
+                </td>
                 <td>{task.createdAt}</td>
                 <td>{task.assignedMember}</td>
               </tr>

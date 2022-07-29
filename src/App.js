@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
 import endpoints from './config/endpoints';
 import GuestRoute from "./container/GuestRoute";
 import PrivateRoute from "./container/PrivateRoute";
@@ -6,7 +7,9 @@ import Dashboard from './pages/Dashboard';
 import Login from './pages/Login';
 import Members from './pages/Members';
 import TaskCreate from './pages/TaskCreate';
+import TaskDetails from "./pages/TaskDetails";
 import Tasks from './pages/Tasks';
+import 'react-toastify/dist/ReactToastify.css';
 
 function App() {
   return (
@@ -27,6 +30,11 @@ function App() {
             <Tasks />
           </PrivateRoute>
         } />
+        <Route path={endpoints.TASKS_DETAILS} element={
+          <PrivateRoute>
+            <TaskDetails />
+          </PrivateRoute>
+        } />
         <Route path={endpoints.TASKS_CREATE} element={
           <PrivateRoute>
             <TaskCreate />
@@ -38,6 +46,7 @@ function App() {
           </PrivateRoute>
         } />
       </Routes>
+      <ToastContainer />
     </div>
   );
 }

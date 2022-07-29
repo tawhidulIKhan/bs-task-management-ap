@@ -1,4 +1,4 @@
-import { mapTasksFromServerToClient } from './mapper';
+import { mapTasksFromServerToClient, mapTaskFromServerToClient } from './mapper';
 import axios from 'axios';
 import endpoints from '../../../config/endpoints';
 import { getAxiosHeader } from '../../../utils/helpers';
@@ -36,9 +36,56 @@ const create = async (request) => {
    }
  }
 
+ const update = async (request) => {
+  const response = await axios({
+   method: 'post',
+   url:endpoints.TASKS_UPDATE_API.replace(':id', request.id),
+   data: {
+    id: request.id,
+    title: request.title,
+    description: request.description,
+    assigned_to: request.assignedTo,
+    '_method': 'PUT'
+   },
+   headers: getAxiosHeader()
+  });
+   return {
+     data: response.data,
+   }
+ }
+
+
+ const show = async (request) => {
+  const response = await axios({
+    method: 'get',
+    url:endpoints.TASKS_DETAILS_API.replace(':id', request.id),
+    headers: getAxiosHeader()
+   });
+   return {
+    data: mapTaskFromServerToClient(response.data),
+  }
+}
+
+const remove = async (request) => {
+  const response = await axios({
+    method: 'post',
+    url:endpoints.TASKS_DETAILS_API.replace(':id', request.id),
+    data: {
+      '_method': 'DELETE'
+    },
+    headers: getAxiosHeader()
+   });
+   return {
+    data: response.data,
+  }
+}
+
 const TaskManager = {
   all,
-  create
+  create,
+  show,
+  update,
+  remove
 }
 
 export default TaskManager;
