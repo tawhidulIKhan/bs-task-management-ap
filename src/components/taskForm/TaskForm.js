@@ -99,13 +99,13 @@ export default function TaskForm(props) {
       <div className='container-xs'>
         <PageHeader 
           title={task ? "Update Task" : "Create Task"} 
-          linkLabel="Back to task" 
+          linkLabel="Back to tasks" 
           link={endpoints.TASKS}
         />
         <div className='page__content'>
           <form className='form'>
             <p className="form__item">
-              <label className='form__item__label'>Title</label>
+              <label className='form__item__label'>Title <span className='form__item__required'>*</span></label>
               <input onChange={titleHandler} className='input-field' placeholder='Enter title' value={userInput.title} />
               {errors?.title ? <Error error={errors.title} /> : null}
             </p>
@@ -115,7 +115,7 @@ export default function TaskForm(props) {
               {errors?.description ? <Error error={errors.description} /> : null}
             </p>
             <p className="form__item">
-              <label className='form__item__label'>Members</label>
+              <label className='form__item__label'>Member</label>
               <select onChange={memberHandler} className='input-select'>
                 {members.map(member => <option selected={userInput.assignedTo === member.id} key={member.id} value={member.id}>{member.name}</option>)}
               </select>
