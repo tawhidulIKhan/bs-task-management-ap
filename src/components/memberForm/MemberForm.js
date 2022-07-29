@@ -5,6 +5,7 @@ import MemberManager from '../../services/api/members/request';
 import { successMsg } from '../../utils/helpers';
 import Error from '../error/Error';
 import Loading from '../loading/Loading';
+import PageHeader from '../pageHeader/PageHeader';
 import './MemberForm.scss';
 const INITIAL_USER_INPUT = {
   name: '',
@@ -29,6 +30,10 @@ export default function MemberForm(props) {
 
   const  submitForm = (ev) => {
     ev.preventDefault();
+    if(!userInput.name){
+      setErrors({name: ['Enter member name']})
+      return;
+    }
     member ? updateMember() : createMember()
   }
 
@@ -80,36 +85,37 @@ export default function MemberForm(props) {
 
   return (
     loading ? <Loading /> : (
-    <div className='MemberForm form'>
+    <div className='memberform form'>
       <div className='container-xs'>
-        <div className='page__header'>
-          <h2 className='page__header__title'>Create member</h2>
-          <div>
-            <Link to="/members">Back to Members</Link>
-          </div>
-        </div>
+        <PageHeader
+          title={member ? "Update Member" : "Create Member"} 
+          linkLabel="Back to members" 
+          link={endpoints.MEMBERS}
+        />
         <div className='page__content'>
           <form className='form'>
             <p className="form__item">
-              <label className='form__item__label'>Name</label>
-              <input onChange={nameHandler} className='input-field' placeholder='Enter name' value={userInput.name} />
+              <label className='form__item__label'>Name<span className='form__item__required'>*</span></label>
+              <input onChange={nameHandler} className='input-field' placeholder='Enter member name' value={userInput.name} />
               {errors?.name ? <Error error={errors.name} /> : null}
             </p>
             <p className="form__item">
               <label className='form__item__label'>Email</label>
-              <input onChange={emailHandler} className='input-field' placeholder='Enter email' value={userInput.email} />
+              <input onChange={emailHandler} className='input-field' placeholder='Enter member email' value={userInput.email} />
               {errors?.email ? <Error error={errors.email} /> : null}
             </p>
-            <button onClick={submitForm} className='btn--primary'>
-              {member ? 'Update' : 'Create'}
-            </button>
-            {
-              member ? (            
-              <button onClick={deleteMember} className='btn--danger'>
-                Delete
+            <div className='memberform__actions'>
+              <button onClick={submitForm} className='btn--primary'>
+                {member ? 'Update' : 'Create'}
               </button>
-            ): null
-            }
+              {
+                member ? (            
+                <button onClick={deleteMember} className='btn--danger'>
+                  Delete
+                </button>
+              ): null
+              }
+            </div>
           </form>
         </div>
       </div>
