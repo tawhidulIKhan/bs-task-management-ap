@@ -1,6 +1,7 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { getSessionUser, resetSession } from '../../store/session/actions';
+import './MenuProfile.scss';
 
 function MenuProfile(props) {
     const { user, resetSessionAction } = props;
@@ -9,11 +10,9 @@ function MenuProfile(props) {
     }
 
     return (
-        <div>
-            <div className='header__profile'>
-                <div>Hello, <span className='header__profile__name'>{user.username}</span></div>
-                <button onClick={logout} className='header__profile__logout' to="logout">Logout</button>
-            </div>
+        <div className='profile'>
+            <div>Hello, <span className='profile__name'>{user.username}</span></div>
+            <button onClick={logout} className='profile__logout' to="logout">Logout</button>
         </div>
     )
 }
