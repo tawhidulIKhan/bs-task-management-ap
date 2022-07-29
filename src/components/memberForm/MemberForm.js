@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
+import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import endpoints from '../../config/endpoints';
 import MemberManager from '../../services/api/members/request';
 import { successMsg } from '../../utils/helpers';
@@ -13,7 +13,6 @@ const INITIAL_USER_INPUT = {
 }
 export default function MemberForm(props) {
   const { member } = props;
-  const [members, setMembers] = useState([]);
   const [errors, setErrors] = useState(null);
   const [loading, setLoading] = useState(true);
   const [userInput, setUserInput] = useState(INITIAL_USER_INPUT)
