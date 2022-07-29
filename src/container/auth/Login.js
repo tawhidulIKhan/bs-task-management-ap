@@ -1,8 +1,10 @@
 import React, {useState} from 'react'
+import { connect } from 'react-redux';
 import AuthManager from '../../services/api/auth/request';
+import { setSession } from '../../store/session/actions';
 import './Auth.scss';
 
-export default function LoginContent() {
+function LoginContent(props) {
   const [userInput, setUserInput] = useState({
     username:'',
     password: ''
@@ -26,7 +28,7 @@ export default function LoginContent() {
     ev.preventDefault();
     try {
       const response = await AuthManager.login(userInput);
-      console.log(response);
+      props.setSessionAction(response.data);
     } catch (error) {
       console.error(error);  
     }
@@ -51,3 +53,9 @@ export default function LoginContent() {
       </div>
   )
 }
+
+const mapDispatchToProps = {
+  setSessionAction: setSession
+}
+
+export default connect(null, mapDispatchToProps)(LoginContent);
