@@ -17,7 +17,6 @@ export default function TaskList() {
     try {
       const response = await TaskManager.all();
       setTasks(response.data);
-      console.log(response);
     } catch (error) {
       console.log(error);
     }
@@ -44,7 +43,7 @@ export default function TaskList() {
               <tr key={task.id}>
                 <td>{task.title}</td>
                 <td>{task.createdAt}</td>
-                <td>{task.assingedTo}</td>
+                <td>{task.assignedMember}</td>
               </tr>
             ))}
           </tbody>
