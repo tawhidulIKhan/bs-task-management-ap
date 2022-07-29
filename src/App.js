@@ -10,6 +10,7 @@ import TaskCreate from './pages/TaskCreate';
 import TaskDetails from "./pages/TaskDetails";
 import Tasks from './pages/Tasks';
 import 'react-toastify/dist/ReactToastify.css';
+import MemberCreate from "./pages/MemberCreate";
 
 function App() {
   return (
@@ -43,6 +44,11 @@ function App() {
         <Route path={endpoints.MEMBERS} element={
           <PrivateRoute>
             <Members />
+          </PrivateRoute>
+        } />
+        <Route path={endpoints.MEMBERS_CREATE} element={
+          <PrivateRoute>
+            <MemberCreate />
           </PrivateRoute>
         } />
       </Routes>
