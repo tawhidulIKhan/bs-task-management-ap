@@ -45,7 +45,9 @@
     &__logout{
       color: var(--primary-color);
       text-decoration: none;
-
+      border:none;
+      padding:0;
+      cursor: pointer;
     }
   }
 }
