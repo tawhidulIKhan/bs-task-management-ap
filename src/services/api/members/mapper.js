@@ -4,10 +4,13 @@
  * @returns formatted member obj
  */
 
+import { dateFormat } from "../../../utils/helpers"
+
 export const mapMemberFromServerToClient = (member) => ({
   id: member.id,
   name: member.name,
-  email: member.email
+  email: member.email || '-',
+  createdAt: dateFormat(member.created_at),
 })
 
 /**
