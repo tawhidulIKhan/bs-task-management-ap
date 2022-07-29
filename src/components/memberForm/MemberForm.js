@@ -71,7 +71,7 @@ export default function MemberForm(props) {
         await MemberManager.remove({
           id: member.id
         });
-        navigate(endpoints.TASKS);
+        navigate(endpoints.MEMBERS);
       } catch (error) {
         console.error(error)    
       }  
