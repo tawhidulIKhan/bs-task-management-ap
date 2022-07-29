@@ -33,7 +33,7 @@ export default function TaskForm(props) {
 
   const fetchMembers = async () => {
     try {
-      const response = await MemberManager.all();
+      const response = await MemberManager.getAll();
       setMembers(response.data);
     } catch (error) {
       console.error(error);
