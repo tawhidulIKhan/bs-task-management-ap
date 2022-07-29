@@ -23,7 +23,7 @@ export default function MemberList() {
       <div className='page__header'>
         <h2 className='page__header__title'>All Members</h2>
         <div>
-          <Link to="/tasks/create" className='btn--link'>Add New member</Link>
+          <Link to={endpoints.MEMBERS_CREATE} className='btn--link'>Add New member</Link>
         </div>
       </div>
       <div className='page__content'>
