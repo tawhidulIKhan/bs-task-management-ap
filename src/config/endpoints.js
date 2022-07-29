@@ -12,7 +12,7 @@ const endpoints = {
   TASKS_UPDATE_API:  `${API_ENDPOINT}/tasks/:id`,
   TASKS_CREATE: "/tasks/create",
   TASKS_CREATE_API: `${API_ENDPOINT}/tasks/create`,
-  MEMBERS: "members",
+  MEMBERS: "/members",
   MEMBERS_API: `${API_ENDPOINT}/members`,
   MEMBERS_DETAILS: "/members/:id",
   MEMBERS_CREATE: "/members/create",
