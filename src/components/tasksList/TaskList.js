@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import endpoints from '../../config/endpoints'
 import usePagination from '../../hooks/usePagination';
 import TaskManager from '../../services/api/tasks/request';
+import NotFound from '../notFound/NotFound';
 import PageHeader from '../pageHeader/PageHeader';
 import Pagination from '../pagination/Pagination';
 
@@ -58,12 +59,15 @@ export default function TaskList() {
             ))}
           </tbody>
         </table>
+        {!tasks.length ? <NotFound message="No Tasks Found" /> : null}
+        {!tasks.length ?         
         <Pagination 
           onClick={onPaginate} 
           perPage={meta.perPage} 
           total={meta.total} 
           currentPage={meta.currentPage}
-        />
+        /> : null
+        }      
       </div>
     </div>
   )
