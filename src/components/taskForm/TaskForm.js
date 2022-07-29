@@ -4,6 +4,7 @@ import endpoints from '../../config/endpoints';
 import MemberManager from '../../services/api/members/request';
 import TaskManager from '../../services/api/tasks/request';
 import { successMsg } from '../../utils/helpers';
+import Error from '../error/Error';
 import Loading from '../loading/Loading';
 import './TaskForm.scss';
 const INITIAL_USER_INPUT = {
@@ -13,7 +14,7 @@ const INITIAL_USER_INPUT = {
 }
 export default function TaskForm(props) {
   const { task } = props;
-
+  const [errors, setErrors] = useState(null);
   const [members, setMembers] = useState([]);
   const [loading, setLoading] = useState(true);
   const [userInput, setUserInput] = useState(INITIAL_USER_INPUT)
@@ -44,7 +45,12 @@ export default function TaskForm(props) {
 
   const createTask = async (ev) => {
     try {
-      await TaskManager.create(userInput);
+      const response = await TaskManager.create(userInput);
+      console.log(response)
+      if(response.data.errors){
+        setErrors(response.data.errors);
+        return;
+      }
       navigate(endpoints.TASKS);
     } catch (error) {
       console.error(error)    
@@ -101,10 +107,12 @@ export default function TaskForm(props) {
             <p className="form__item">
               <label className='form__item__label'>Title</label>
               <input onChange={titleHandler} className='input-field' placeholder='Enter title' value={userInput.title} />
+              {errors?.title ? <Error error={errors.title} /> : null}
             </p>
             <p className="form__item">
               <label className='form__item__label'>Description</label>
               <textarea onChange={descriptionHandler} className='input-field' placeholder='Enter your description' value={userInput.description} />
+              {errors?.description ? <Error error={errors.description} /> : null}
             </p>
             <p className="form__item">
               <label className='form__item__label'>Members</label>
