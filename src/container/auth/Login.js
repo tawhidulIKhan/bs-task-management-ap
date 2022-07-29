@@ -38,14 +38,14 @@ function LoginContent(props) {
       <div className='auth'>
           <div className='auth__content'>
             <h1 className='auth__title'>Login</h1>
-            <form>
-              <p>
-                <label className='auth__label'>Username</label>
-                <input onChange={nameHandle} className='auth__input--text input-field' placeholder='Enter your username' />
+            <form className='form'>
+              <p className='form__item'>
+                <label className='form__item__label'>Username</label>
+                <input onChange={nameHandle} className='input-field' placeholder='Enter your username' />
               </p>
-              <p>
-                <label className='auth__label'>Password</label>
-                <input onChange={passwordHandle} className='auth__input--password input-field'  placeholder='Enter your password' />
+              <p className='form__item'>
+                <label className='form__item__label'>Password</label>
+                <input onChange={passwordHandle} className='input-field'  placeholder='Enter your password' />
               </p>
               <button onClick={login} className='btn--primary'>Login</button>
             </form>
