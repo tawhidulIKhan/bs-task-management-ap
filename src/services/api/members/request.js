@@ -1,7 +1,7 @@
 import axios from 'axios';
 import endpoints from '../../../config/endpoints';
 import { getAxiosHeader } from '../../../utils/helpers';
-import { mapMembersFromServerToClient, mapMemberFromServerToClient } from './mapper';
+import { mapMembersFromServerToClient, mapMemberFromServerToClient, mapMeta } from './mapper';
 /**
  * function to fetch all members
  * @param {page,queryparams} request 
@@ -11,12 +11,15 @@ const all = async (request) => {
  const response = await axios({
   method: 'get',
   url:endpoints.MEMBERS_API,
+  params: {
+    page: request.currentPage
+  },
   headers: getAxiosHeader()
  }
   )
   return {
     data: mapMembersFromServerToClient(response.data.data),
-    meta: null
+    meta: mapMeta(response.data.meta)
   }
 }
 

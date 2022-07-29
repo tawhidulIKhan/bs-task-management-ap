@@ -2,22 +2,29 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import endpoints from '../../config/endpoints';
 import MemberManager from '../../services/api/members/request';
+import Pagination from '../pagination/Pagination';
 
 export default function MemberList() {
   const [members, setMembers] = useState([])
+  const [meta, setMeta] = useState({
+    currentPage: 1
+  })
   useEffect(() => {
-    fetchTasks();
+    fetchMembers(meta);
   }, [])
 
-  const fetchTasks = async () => {
+  const fetchMembers = async (request) => {
     try {
-      const response = await MemberManager.all();
+      const response = await MemberManager.all(request);
       setMembers(response.data);
+      setMeta(response.meta)
     } catch (error) {
       console.log(error);
     }
   }
-
+  const onPaginate = (currentPage) => {
+    fetchMembers({ currentPage });
+  }
   return (
     <div className='container'>
       <div className='page__header'>
@@ -47,6 +54,12 @@ export default function MemberList() {
           ))}
           </tbody>
         </table>
+        <Pagination 
+          onClick={onPaginate} 
+          perPage={meta.perPage} 
+          total={meta.total} 
+          currentPage={meta.currentPage}
+        />
       </div>
     </div>
   )
