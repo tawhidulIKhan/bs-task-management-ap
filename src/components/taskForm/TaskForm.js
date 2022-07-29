@@ -6,6 +6,7 @@ import TaskManager from '../../services/api/tasks/request';
 import { successMsg } from '../../utils/helpers';
 import Error from '../error/Error';
 import Loading from '../loading/Loading';
+import PageHeader from '../pageHeader/PageHeader';
 import './TaskForm.scss';
 const INITIAL_USER_INPUT = {
   title: '',
@@ -96,12 +97,11 @@ export default function TaskForm(props) {
     loading ? <Loading /> : (
     <div className='taskform form'>
       <div className='container-xs'>
-        <div className='page__header'>
-          <h2 className='page__header__title'>Create task</h2>
-          <div>
-            <Link to="/tasks">Back to Tasks</Link>
-          </div>
-        </div>
+        <PageHeader 
+          title={task ? "Update Task" : "Create Task"} 
+          linkLabel="Back to task" 
+          link={endpoints.TASKS}
+        />
         <div className='page__content'>
           <form className='form'>
             <p className="form__item">
@@ -120,16 +120,18 @@ export default function TaskForm(props) {
                 {members.map(member => <option selected={userInput.assignedTo === member.id} key={member.id} value={member.id}>{member.name}</option>)}
               </select>
             </p>
-            <button onClick={submitForm} className='btn--primary'>
-              {task ? 'Update' : 'Create'}
-            </button>
-            {
-              task ? (            
-              <button onClick={deleteTask} className='btn--danger'>
-                Delete
+            <div className='taskform__actions'>
+              <button onClick={submitForm} className='btn--primary'>
+                {task ? 'Update' : 'Create'}
               </button>
-            ): null
-            }
+              {
+                task ? (            
+                <button onClick={deleteTask} className='btn--danger'>
+                  Delete
+                </button>
+              ): null
+              }
+            </div>
           </form>
         </div>
       </div>
