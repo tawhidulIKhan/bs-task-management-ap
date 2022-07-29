@@ -45,7 +45,7 @@ function LoginContent(props) {
               </p>
               <p className='form__item'>
                 <label className='form__item__label'>Password</label>
-                <input onChange={passwordHandle} className='input-field'  placeholder='Enter your password' />
+                <input type="password" onChange={passwordHandle} className='input-field'  placeholder='Enter your password' />
               </p>
               <button onClick={login} className='btn--primary'>Login</button>
             </form>
