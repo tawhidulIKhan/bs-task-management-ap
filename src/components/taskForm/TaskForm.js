@@ -7,7 +7,7 @@ import './TaskForm.scss';
 const INITIAL_USER_INPUT = {
   title: '',
   description: '',
-  member: null
+  assignedTo: null
 }
 export default function TaskForm() {
   const [members, setMembers] = useState([]);
@@ -42,7 +42,7 @@ export default function TaskForm() {
     setUserInput({...userInput, descriptionHandler: ev.target.value})
   
     const memberHandler =(ev) => 
-    setUserInput({...userInput, member: ev.target.value})
+    setUserInput({...userInput, assignedTo: ev.target.value})
 
   return (
     <div className='taskform form'>
@@ -66,7 +66,7 @@ export default function TaskForm() {
             <p className="form__item">
               <label className='form__item__label'>Members</label>
               <select onChange={memberHandler} className='input-select'>
-                {members.map(member => <option key={member.id}>{member.name}</option>)}
+                {members.map(member => <option key={member.id} value={member.id}>{member.name}</option>)}
               </select>
             </p>
             <button onClick={createTask} className='btn--primary'>Create</button>
