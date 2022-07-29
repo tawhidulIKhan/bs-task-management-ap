@@ -1,0 +1,11 @@
+.page__header{
+    &__breadcrumb{
+        font-size: 14px;
+        display: flex;
+        gap: 5px;
+        align-items: center;
+        a{
+            color: #000;
+        }
+    }
+}
