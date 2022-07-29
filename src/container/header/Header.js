@@ -1,15 +1,9 @@
-import React from 'react'
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import MenuProfile from '../../components/menuProfile/MenuProfile';
 import endpoints from '../../config/endpoints';
-import { getSessionUser, resetSession } from '../../store/session/actions';
 import './Header.scss';
 
-function Header(props) {
-  const { user, resetSessionAction } = props;
-  const logout = () => {
-    resetSessionAction();
-  }
+export default function Header(props) {
   return (
     <div className='header'>
       <div className='container'>
@@ -29,10 +23,7 @@ function Header(props) {
                 <Link className='header__menu__item' to={endpoints.MEMBERS}>Members</Link>
               </li>
             </ul>
-            <div className='header__profile'>
-              <div>Hello, <span className='header__profile__name'>{user.username}</span></div>
-              <button onClick={logout} className='header__profile__logout' to="logout">Logout</button>
-            </div>
+            <MenuProfile />
           </div>
         </div>
       </div>
@@ -40,12 +31,3 @@ function Header(props) {
   )
 }
 
-const mapStateToProps = (state) => ({
-  user: getSessionUser(state)
-})
-
-const mapDispatchToProps = (dispatch) => ({
-  resetSessionAction: () => dispatch(resetSession())
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header)
