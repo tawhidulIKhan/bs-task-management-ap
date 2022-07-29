@@ -7,10 +7,15 @@ import { getAxiosHeader } from '../../../utils/helpers';
  * @param {page,queryparams} request 
  * @returns data, meta
  */
-const all = (request) => {
-  const Tasks = [{id: "1", title: "Task 1", createdAt: "date-111", assignedTo: "Tawhid"}]
-  return {
-    data: mapTasksFromServerToClient(Tasks),
+const all = async (request) => {
+  const response = await axios({
+    method: 'get',
+    url:endpoints.TASKS_API,
+    data: request,
+    headers: getAxiosHeader()
+   });
+   return {
+    data: mapTasksFromServerToClient(response.data.data),
     meta: null
   }
 }
@@ -19,7 +24,11 @@ const create = async (request) => {
   const response = await axios({
    method: 'post',
    url:endpoints.TASKS_CREATE_API,
-   data: request,
+   data: {
+    title: request.title,
+    description: request.description,
+    assigned_to: request.assignedTo
+   },
    headers: getAxiosHeader()
   });
    return {
