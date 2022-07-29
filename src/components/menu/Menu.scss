@@ -1,0 +1,15 @@
+.menu{
+    list-style: none;
+    padding: 0;
+    margin:0;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    &__item{
+      font-style: normal;
+      color: #111;
+      text-decoration: none;
+      padding: 16px 0;
+      display: inline-flex;
+    }
+  }
