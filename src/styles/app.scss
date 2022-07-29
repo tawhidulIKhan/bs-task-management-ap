@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100;300;400;500;600;700;800&display=swap');
-
 :root {
   --primary-font: 'Poppins', sans-serif;
   --primary-color: rgb(62, 2, 189);
@@ -10,8 +9,11 @@
   --heading-color: rgb(30, 30, 30);
 }
 
+@import './helpers';
+
 body {
   font-family: var(--primary-font);
+  font-size: 14px;
   color: var(--body-color);
   margin:0;
   padding:0;
@@ -20,15 +22,6 @@ body {
 h1,h2,h3,h4,h5,h6{
   color: var(--heading-color);
 }
-.container{
-  width: calc(100vw - 200px);
-  margin: auto;
-}
-.container-xs{
-  width: calc(60vw - 200px);
-  margin: auto;
-}
-
 .input{
   &-field{
   display: block;
@@ -98,7 +91,7 @@ h1,h2,h3,h4,h5,h6{
   thead{
     th{
   text-align: left;
-  border-bottom: 1px solid #959595;
+  border-bottom: 2px solid #dedddd;
   padding: 8px 0px;
   margin:0;
   color: #111;
@@ -110,6 +103,21 @@ h1,h2,h3,h4,h5,h6{
   border-bottom: 1px solid #eee;
   padding: 15px 0px;
   font-size: 14px;
+ }
+ tbody{
+  td:first-child{
+    font-size: 15px;
+    font-weight: 600;
+    a{
+      color: #000;
+      text-transform: capitalize;
+    }
+  }
+  tr:last-child{
+    td{
+      border-bottom:none;
+    }
+  }
  }
 }
 
