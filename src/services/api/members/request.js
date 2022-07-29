@@ -23,7 +23,21 @@ const all = async (request) => {
   }
 }
 
-const create = async (request) => {
+const getAll = async (request) => {
+  const response = await axios({
+   method: 'get',
+   url:endpoints.MEMBERS_ALL_API,
+   params: {},
+   headers: getAxiosHeader()
+  }
+   )
+   console.log(response.data);
+   return {
+     data: mapMembersFromServerToClient(response.data.data),
+   }
+ }
+ 
+ const create = async (request) => {
   const response = await axios({
    method: 'post',
    url:endpoints.MEMBERS_CREATE_API,
@@ -82,6 +96,7 @@ const remove = async (request) => {
 
 const MemberManager = {
   all,
+  getAll,
   create,
   show,
   remove,
