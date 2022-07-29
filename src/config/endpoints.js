@@ -7,9 +7,10 @@ const endpoints = {
   DASHBOARD: '/',
   TASKS: "/tasks",
   TASKS_CREATE: "/tasks/create",
+  TASKS_CREATE_API: `${API_ENDPOINT}/tasks/create`,
   MEMBERS: "members",
   MEMBERS_API: `${API_ENDPOINT}/members`,
   MEMBERS_CREATE: "/members/create",
-  MEMBERS_CREATE_API: `${API_ENDPOINT}/members`,
+  MEMBERS_CREATE_API: `${API_ENDPOINT}/members/create`,
 }
 export default endpoints;
