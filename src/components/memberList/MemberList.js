@@ -8,7 +8,7 @@ import Pagination from '../pagination/Pagination';
 export default function MemberList() {
   const [members, setMembers] = useState([]);
   const [meta, setMeta] = useState({
-    currentPage: 1
+    currentPage: 1,
   });
   useEffect(() => {
     fetchMembers(meta);
@@ -20,7 +20,7 @@ export default function MemberList() {
       setMembers(response.data);
       setMeta(response.meta);
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
   const onPaginate = (currentPage) => {
@@ -50,7 +50,9 @@ export default function MemberList() {
             {members.map((member) => (
               <tr key={member.id}>
                 <td>
-                  <Link to={endpoints.MEMBERS_DETAILS.replace(':id', member.id)}>
+                  <Link
+                    to={endpoints.MEMBERS_DETAILS.replace(':id', member.id)}
+                  >
                     {member.name}
                   </Link>
                 </td>

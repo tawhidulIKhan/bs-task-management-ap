@@ -10,7 +10,7 @@ export const mapTaskFromServerToClient = (task) => ({
   description: task.description,
   createdAt: task.created_at,
   assignedTo: task.assigned?.id,
-  assignedMember: task.assigned?.name
+  assignedMember: task.assigned?.name,
 });
 
 /**
@@ -24,5 +24,5 @@ export const mapTasksFromServerToClient = (tasks) =>
 export const mapMeta = (meta) => ({
   currentPage: meta.current_page,
   total: meta.total,
-  perPage: meta.per_page
+  perPage: meta.per_page,
 });

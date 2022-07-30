@@ -1,4 +1,8 @@
-import { mapTasksFromServerToClient, mapTaskFromServerToClient, mapMeta } from './mapper';
+import {
+  mapTasksFromServerToClient,
+  mapTaskFromServerToClient,
+  mapMeta,
+} from './mapper';
 import axios from 'axios';
 import endpoints from '../../../config/endpoints';
 import { getAxiosHeader } from '../../../utils/helpers';
@@ -12,13 +16,13 @@ const all = async (request) => {
     method: 'get',
     url: endpoints.TASKS_API,
     params: {
-      page: request.currentPage
+      page: request.currentPage,
     },
-    headers: getAxiosHeader()
+    headers: getAxiosHeader(),
   });
   return {
     data: mapTasksFromServerToClient(response.data.data),
-    meta: mapMeta(response.data.meta)
+    meta: mapMeta(response.data.meta),
   };
 };
 
@@ -29,12 +33,12 @@ const create = async (request) => {
     data: {
       title: request.title,
       description: request.description,
-      assigned_to: request.assignedTo
+      assigned_to: request.assignedTo,
     },
-    headers: getAxiosHeader()
+    headers: getAxiosHeader(),
   });
   return {
-    data: response.data
+    data: response.data,
   };
 };
 
@@ -47,12 +51,12 @@ const update = async (request) => {
       title: request.title,
       description: request.description,
       assigned_to: request.assignedTo,
-      _method: 'PUT'
+      _method: 'PUT',
     },
-    headers: getAxiosHeader()
+    headers: getAxiosHeader(),
   });
   return {
-    data: response.data
+    data: response.data,
   };
 };
 
@@ -60,10 +64,10 @@ const show = async (request) => {
   const response = await axios({
     method: 'get',
     url: endpoints.TASKS_DETAILS_API.replace(':id', request.id),
-    headers: getAxiosHeader()
+    headers: getAxiosHeader(),
   });
   return {
-    data: mapTaskFromServerToClient(response.data)
+    data: mapTaskFromServerToClient(response.data),
   };
 };
 
@@ -72,12 +76,12 @@ const remove = async (request) => {
     method: 'post',
     url: endpoints.TASKS_DETAILS_API.replace(':id', request.id),
     data: {
-      _method: 'DELETE'
+      _method: 'DELETE',
     },
-    headers: getAxiosHeader()
+    headers: getAxiosHeader(),
   });
   return {
-    data: response.data
+    data: response.data,
   };
 };
 
@@ -86,7 +90,7 @@ const TaskManager = {
   create,
   show,
   update,
-  remove
+  remove,
 };
 
 export default TaskManager;

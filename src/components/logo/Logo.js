@@ -1,8 +1,6 @@
-import React from 'react';
-import App from '../../App';
 import AppConfig from '../../config/app';
-import './Logo.scss';
 import LogoBrand from './../../images/logo.svg';
+import './Logo.scss';
 
 export default function Logo() {
   return (

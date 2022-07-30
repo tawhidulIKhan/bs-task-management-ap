@@ -17,7 +17,7 @@ const routes = [
       <PrivateRoute>
         <Dashboard />
       </PrivateRoute>
-    )
+    ),
   },
   {
     path: endpoints.LOGIN,
@@ -25,7 +25,7 @@ const routes = [
       <GuestRoute>
         <Login />
       </GuestRoute>
-    )
+    ),
   },
   {
     path: endpoints.TASKS,
@@ -33,7 +33,7 @@ const routes = [
       <PrivateRoute>
         <Tasks />
       </PrivateRoute>
-    )
+    ),
   },
   {
     path: endpoints.TASKS_DETAILS,
@@ -41,7 +41,7 @@ const routes = [
       <PrivateRoute>
         <TaskDetails />
       </PrivateRoute>
-    )
+    ),
   },
   {
     path: endpoints.TASKS_CREATE,
@@ -49,7 +49,7 @@ const routes = [
       <PrivateRoute>
         <TaskCreate />
       </PrivateRoute>
-    )
+    ),
   },
   {
     path: endpoints.MEMBERS,
@@ -57,7 +57,7 @@ const routes = [
       <PrivateRoute>
         <Members />
       </PrivateRoute>
-    )
+    ),
   },
   {
     path: endpoints.MEMBERS_DETAILS,
@@ -65,7 +65,7 @@ const routes = [
       <PrivateRoute>
         <MemberDetails />
       </PrivateRoute>
-    )
+    ),
   },
   {
     path: endpoints.MEMBERS_CREATE,
@@ -73,8 +73,8 @@ const routes = [
       <PrivateRoute>
         <MemberCreate />
       </PrivateRoute>
-    )
-  }
+    ),
+  },
 ];
 
 export default routes;

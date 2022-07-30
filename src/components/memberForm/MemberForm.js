@@ -9,7 +9,7 @@ import PageHeader from '../pageHeader/PageHeader';
 import './MemberForm.scss';
 const INITIAL_USER_INPUT = {
   name: '',
-  email: ''
+  email: '',
 };
 export default function MemberForm(props) {
   const { member } = props;
@@ -33,7 +33,6 @@ export default function MemberForm(props) {
   const createMember = async () => {
     try {
       const response = await MemberManager.create(userInput);
-      console.log(response);
       if (response.data.errors) {
         setErrors(response.data.errors);
         return;
@@ -48,7 +47,7 @@ export default function MemberForm(props) {
     try {
       await MemberManager.update({
         ...userInput,
-        id: member.id
+        id: member.id,
       });
       successMsg('Member Updated');
     } catch (error) {
@@ -56,16 +55,18 @@ export default function MemberForm(props) {
     }
   };
 
-  const nameHandler = (ev) => setUserInput({ ...userInput, name: ev.target.value });
+  const nameHandler = (ev) =>
+    setUserInput({ ...userInput, name: ev.target.value });
 
-  const emailHandler = (ev) => setUserInput({ ...userInput, email: ev.target.value });
+  const emailHandler = (ev) =>
+    setUserInput({ ...userInput, email: ev.target.value });
 
   const deleteMember = async (ev) => {
     ev.preventDefault();
     if (window.confirm('Are you sure to delete')) {
       try {
         await MemberManager.remove({
-          id: member.id
+          id: member.id,
         });
         navigate(endpoints.MEMBERS);
       } catch (error) {

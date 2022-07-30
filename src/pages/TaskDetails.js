@@ -17,7 +17,7 @@ export default function TaskDetails() {
     try {
       setLoading(true);
       const response = await TaskManager.show({
-        id: id
+        id: id,
       });
       setTask(response.data);
       setLoading(false);

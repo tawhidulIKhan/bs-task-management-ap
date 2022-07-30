@@ -7,20 +7,20 @@ import './Auth.scss';
 function LoginContent(props) {
   const [userInput, setUserInput] = useState({
     username: '',
-    password: ''
+    password: '',
   });
 
   const nameHandle = (ev) => {
     setUserInput({
       ...userInput,
-      username: ev.target.value
+      username: ev.target.value,
     });
   };
 
   const passwordHandle = (ev) => {
     setUserInput({
       ...userInput,
-      password: ev.target.value
+      password: ev.target.value,
     });
   };
 
@@ -66,7 +66,7 @@ function LoginContent(props) {
 }
 
 const mapDispatchToProps = {
-  setSessionAction: setSession
+  setSessionAction: setSession,
 };
 
 export default connect(null, mapDispatchToProps)(LoginContent);

@@ -1,7 +1,7 @@
-import Logo from "../../components/logo/Logo";
-import Menu from "../../components/menu/Menu";
-import MenuProfile from "../../components/menuProfile/MenuProfile";
-import "./Header.scss";
+import Logo from '../../components/logo/Logo';
+import Menu from '../../components/menu/Menu';
+import MenuProfile from '../../components/menuProfile/MenuProfile';
+import './Header.scss';
 
 export default function Header() {
   return (

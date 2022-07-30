@@ -17,7 +17,7 @@ export default function MemberDetails() {
     try {
       setLoading(true);
       const response = await MemberManager.show({
-        id: id
+        id: id,
       });
       setMember(response.data);
       setLoading(false);
@@ -26,5 +26,7 @@ export default function MemberDetails() {
       setLoading(false);
     }
   };
-  return <Layout>{loading ? <Loading /> : <MemberForm member={member} />}</Layout>;
+  return (
+    <Layout>{loading ? <Loading /> : <MemberForm member={member} />}</Layout>
+  );
 }

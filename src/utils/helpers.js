@@ -5,7 +5,7 @@ export const getAxiosHeader = () => {
   const token = getSessionToken(store.getState());
   return {
     Accept: `application/json`,
-    Authorization: `Bearer ${token}`
+    Authorization: `Bearer ${token}`,
   };
 };
 

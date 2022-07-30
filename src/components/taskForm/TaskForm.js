@@ -10,7 +10,7 @@ import './TaskForm.scss';
 const INITIAL_USER_INPUT = {
   title: '',
   description: '',
-  assignedTo: null
+  assignedTo: null,
 };
 export default function TaskForm(props) {
   const { task } = props;
@@ -56,7 +56,7 @@ export default function TaskForm(props) {
     try {
       await TaskManager.update({
         ...userInput,
-        id: task.id
+        id: task.id,
       });
       successMsg('Task Updated');
     } catch (error) {
@@ -64,18 +64,21 @@ export default function TaskForm(props) {
     }
   };
 
-  const titleHandler = (ev) => setUserInput({ ...userInput, title: ev.target.value });
+  const titleHandler = (ev) =>
+    setUserInput({ ...userInput, title: ev.target.value });
 
-  const descriptionHandler = (ev) => setUserInput({ ...userInput, description: ev.target.value });
+  const descriptionHandler = (ev) =>
+    setUserInput({ ...userInput, description: ev.target.value });
 
-  const memberHandler = (ev) => setUserInput({ ...userInput, assignedTo: ev.target.value });
+  const memberHandler = (ev) =>
+    setUserInput({ ...userInput, assignedTo: ev.target.value });
 
   const deleteTask = async (ev) => {
     ev.preventDefault();
     if (window.confirm('Are you sure to delete')) {
       try {
         await TaskManager.remove({
-          id: task.id
+          id: task.id,
         });
         navigate(endpoints.TASKS);
       } catch (error) {
@@ -114,14 +117,18 @@ export default function TaskForm(props) {
                 placeholder="Enter your description"
                 value={userInput.description}
               />
-              {errors?.description ? <Error error={errors.description} /> : null}
+              {errors?.description ? (
+                <Error error={errors.description} />
+              ) : null}
             </p>
             <p className="form__item">
               <label className="form__item__label">Member</label>
               <select onChange={memberHandler} className="input-select">
                 <option selected>Select a member</option>
                 {!members.length ? (
-                  <option disabled>No member found, please create member first</option>
+                  <option disabled>
+                    No member found, please create member first
+                  </option>
                 ) : null}
                 {members.map((member) => (
                   <option

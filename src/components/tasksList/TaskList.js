@@ -9,7 +9,7 @@ import Pagination from '../pagination/Pagination';
 export default function TaskList() {
   const [tasks, setTasks] = useState([]);
   const [meta, setMeta] = useState({
-    currentPage: 1
+    currentPage: 1,
   });
 
   useEffect(() => {
@@ -30,7 +30,11 @@ export default function TaskList() {
   };
   return (
     <div className="container">
-      <PageHeader title="All Task" btnLabel="Create New Task" btnLink={endpoints.TASKS_CREATE} />
+      <PageHeader
+        title="All Task"
+        btnLabel="Create New Task"
+        btnLink={endpoints.TASKS_CREATE}
+      />
       <div className="page__content">
         <table className="table">
           <thead>
@@ -45,7 +49,9 @@ export default function TaskList() {
             {tasks.map((task) => (
               <tr key={task.id}>
                 <td>
-                  <Link to={endpoints.TASKS_DETAILS.replace(':id', task.id)}>{task.title}</Link>
+                  <Link to={endpoints.TASKS_DETAILS.replace(':id', task.id)}>
+                    {task.title}
+                  </Link>
                 </td>
                 <td>{task.description || '-'}</td>
                 <td>{task.assignedMember}</td>

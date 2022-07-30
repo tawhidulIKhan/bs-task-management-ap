@@ -9,7 +9,7 @@ export const mapMemberFromServerToClient = (member) => ({
   name: member.name,
   email: member.email || '-',
   tasks: member.tasks,
-  createdAt: member.created_at
+  createdAt: member.created_at,
 });
 
 /**
@@ -23,5 +23,5 @@ export const mapMembersFromServerToClient = (members) =>
 export const mapMeta = (meta) => ({
   currentPage: meta.current_page,
   total: meta.total,
-  perPage: meta.per_page
+  perPage: meta.per_page,
 });
