@@ -49,7 +49,7 @@ export default function MemberList() {
           <table className="table">
             <thead>
               <tr>
-                <th>Title</th>
+                <th>Name</th>
                 <th>Number of task assigned</th>
               </tr>
             </thead>
