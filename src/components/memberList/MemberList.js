@@ -50,8 +50,7 @@ export default function MemberList() {
             <thead>
               <tr>
                 <th>Title</th>
-                <th>Email</th>
-                <th>Created at</th>
+                <th>Number of task assigned</th>
               </tr>
             </thead>
             <tbody>
@@ -64,8 +63,7 @@ export default function MemberList() {
                       {member.name}
                     </Link>
                   </td>
-                  <td>{member.email}</td>
-                  <td>{member.createdAt}</td>
+                  <td>{member.totalTask}</td>
                 </tr>
               ))}
             </tbody>
