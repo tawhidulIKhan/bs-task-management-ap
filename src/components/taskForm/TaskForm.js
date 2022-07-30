@@ -17,14 +17,10 @@ export default function TaskForm(props) {
   const { task } = props;
   const [errors, setErrors] = useState(null);
   const [members, setMembers] = useState([]);
-  const [loading, setLoading] = useState(false);
   const [userInput, setUserInput] = useState(INITIAL_USER_INPUT)
   const navigate = useNavigate();
   useEffect(() => {
     fetchMembers();
-    // setTimeout(() => {
-    //   setLoading(false);
-    // }, 300)
   }, [])
 
   useEffect(() => {
