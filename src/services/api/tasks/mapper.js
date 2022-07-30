@@ -7,6 +7,7 @@
 export const mapTaskFromServerToClient = (task) => ({
   id: task.id,
   title: task.title,
+  description: task.description,
   createdAt: task.created_at,
   assignedTo: task.assigned?.id,
   assignedMember: task.assigned?.name
