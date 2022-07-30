@@ -1,7 +1,7 @@
 /**
- * function to format single task item
- * @param {Task object} task
- * @returns formatted task obj
+ * Map single task object from server to client
+ * @param {object} task object
+ * @returns {object} mapped task object
  */
 
 export const mapTaskFromServerToClient = (task) => ({
@@ -14,10 +14,11 @@ export const mapTaskFromServerToClient = (task) => ({
 });
 
 /**
- * function to map tasks
- * @param {Tasks array} tasks
- * @returns formatted tasks
+ * Map tasks array from server to client
+ * @param {array} tasks array
+ * @returns {array} mapped tasks array
  */
+
 export const mapTasksFromServerToClient = (tasks) =>
   tasks.map((task) => mapTaskFromServerToClient(task));
 

@@ -7,10 +7,11 @@ import axios from 'axios';
 import endpoints from '../../../config/endpoints';
 import { getAxiosHeader } from '../../../utils/helpers';
 /**
- * function to fetch all tasks
- * @param {page,queryparams} request
- * @returns data, meta
+ * Get all tasks
+ * @param {object} object with page and other meta
+ * @returns {object} data, meta
  */
+
 const all = async (request) => {
   const response = await axios({
     method: 'get',
@@ -25,6 +26,12 @@ const all = async (request) => {
     meta: mapMeta(response.data.meta),
   };
 };
+
+/**
+ * Create new task
+ * @param {object} object with title, description, assignedTo
+ * @returns {object} data
+ */
 
 const create = async (request) => {
   const response = await axios({
@@ -41,6 +48,12 @@ const create = async (request) => {
     data: response.data,
   };
 };
+
+/**
+ * Update member
+ * @param {object} object with id, title, description, assignedTo
+ * @returns {object} data
+ */
 
 const update = async (request) => {
   const response = await axios({
@@ -60,6 +73,12 @@ const update = async (request) => {
   };
 };
 
+/**
+ * Get task details
+ * @param {object} object with id
+ * @returns {object} data
+ */
+
 const show = async (request) => {
   const response = await axios({
     method: 'get',
@@ -70,6 +89,12 @@ const show = async (request) => {
     data: mapTaskFromServerToClient(response.data),
   };
 };
+
+/**
+ * Delete task
+ * @param {object} object with id
+ * @returns {object} data
+ */
 
 const remove = async (request) => {
   const response = await axios({
