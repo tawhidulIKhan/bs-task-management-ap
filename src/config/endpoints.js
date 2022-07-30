@@ -1,4 +1,6 @@
-const API_ENDPOINT = process.env.REACT_APP_API_URL;
+import AppConfig from './app';
+
+const API_ENDPOINT = AppConfig.apiEndpoint;
 
 const endpointsLocal = {
   LOGIN: '/login',
