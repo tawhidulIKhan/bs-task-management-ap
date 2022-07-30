@@ -25,9 +25,11 @@ export default function TaskList() {
       console.error(error);
     }
   };
+
   const onPaginate = (currentPage) => {
     fetchTasks({ currentPage });
   };
+
   return (
     <div className="container">
       <PageHeader
