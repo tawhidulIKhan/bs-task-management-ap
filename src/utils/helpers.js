@@ -11,7 +11,6 @@ export const getAxiosHeader = () => {
       }
 }
 
-export const dateFormat = (date) => moment(date).format('DD-MM-YYYY');
 export const successMsg = (msg) => {
     toast.success(msg)
 };
