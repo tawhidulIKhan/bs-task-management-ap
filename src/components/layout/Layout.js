@@ -1,11 +1,14 @@
 import React from 'react';
+import Footer from '../footer/Footer';
 import Header from '../header/Header';
+import './Layout.scss';
 
 export default function Layout({ children }) {
   return (
-    <div>
+    <div className="layout">
       <Header />
-      {children}
+      <div className="layout__content">{children}</div>
+      <Footer />
     </div>
   );
 }
