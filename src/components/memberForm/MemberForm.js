@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../button/Button';
 import endpoints from '../../config/endpoints';
 import MemberManager from '../../services/api/members/request';
 import { successMsg } from '../../utils/helpers';
@@ -16,6 +17,8 @@ export default function MemberForm(props) {
   const [errors, setErrors] = useState(null);
   const [userInput, setUserInput] = useState(INITIAL_USER_INPUT);
   const navigate = useNavigate();
+  const [loading, setLoading] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
   useEffect(() => {
     setUserInput({ ...member });
@@ -32,26 +35,33 @@ export default function MemberForm(props) {
 
   const createMember = async () => {
     try {
+      setLoading(true);
       const response = await MemberManager.create(userInput);
       if (response.data.errors) {
         setErrors(response.data.errors);
+        setLoading(false);
         return;
       }
+      setLoading(false);
       navigate(endpoints.MEMBERS);
     } catch (error) {
+      setLoading(false);
       console.error(error);
     }
   };
 
   const updateMember = async () => {
     try {
+      setLoading(true);
       await MemberManager.update({
         ...userInput,
         id: member.id,
       });
       successMsg('Member Updated');
+      setLoading(false);
     } catch (error) {
       console.error(error);
+      setLoading(false);
     }
   };
 
@@ -65,12 +75,15 @@ export default function MemberForm(props) {
     ev.preventDefault();
     if (window.confirm('Are you sure to delete')) {
       try {
+        setDeleteLoading(true);
         await MemberManager.remove({
           id: member.id,
         });
+        setDeleteLoading(false);
         navigate(endpoints.MEMBERS);
       } catch (error) {
         console.error(error);
+        setDeleteLoading(false);
       }
     }
   };
@@ -109,13 +122,18 @@ export default function MemberForm(props) {
             </p>
             {member ? <MemberTasks tasks={member.tasks} /> : null}
             <div className="memberform__actions">
-              <button onClick={submitForm} className="btn--primary">
-                {member ? 'Update' : 'Create'}
-              </button>
+              <Button
+                loading={loading}
+                onClick={submitForm}
+                label={member ? 'Update' : 'Create'}
+              />
               {member ? (
-                <button onClick={deleteMember} className="btn--danger">
-                  Delete
-                </button>
+                <Button
+                  loading={deleteLoading}
+                  onClick={deleteMember}
+                  className="btn--danger"
+                  label={'Delete'}
+                />
               ) : null}
             </div>
           </form>
