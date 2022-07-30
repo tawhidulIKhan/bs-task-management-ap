@@ -21,6 +21,7 @@ export default function TaskForm(props) {
   const [members, setMembers] = useState([]);
   const [userInput, setUserInput] = useState(INITIAL_USER_INPUT);
   const [loading, setLoading] = useState(false);
+  const [deleteLoading, setDeleteLoading] = useState(false);
 
   useEffect(() => {
     fetchMembers();
@@ -93,11 +94,14 @@ export default function TaskForm(props) {
     ev.preventDefault();
     if (window.confirm('Are you sure to delete')) {
       try {
+        setDeleteLoading(true);
         await TaskManager.remove({
           id: task.id,
         });
+        setDeleteLoading(false);
         navigate(endpoints.TASKS);
       } catch (error) {
+        setDeleteLoading(false);
         console.error(error);
       }
     }
@@ -164,9 +168,12 @@ export default function TaskForm(props) {
                 label={task ? 'Update' : 'Create'}
               />
               {task ? (
-                <button onClick={deleteTask} className="btn--danger">
-                  Delete
-                </button>
+                <Button
+                  loading={deleteLoading}
+                  onClick={deleteTask}
+                  className="btn--danger"
+                  label={'Delete'}
+                />
               ) : null}
             </div>
           </form>
