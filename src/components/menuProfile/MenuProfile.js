@@ -22,11 +22,11 @@ function MenuProfile(props) {
 }
 
 const mapStateToProps = (state) => ({
-  user: getSessionUser(state)
+  user: getSessionUser(state),
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  resetSessionAction: () => dispatch(resetSession())
+  resetSessionAction: () => dispatch(resetSession()),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(MenuProfile);
