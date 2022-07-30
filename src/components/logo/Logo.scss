@@ -1,7 +1,12 @@
 .logo{
     display: flex;
     align-items: center;
-    gap: 5px;
+    a{
+        display: flex;
+        align-items: center;
+        gap: 10px;    
+        text-decoration: none;
+    }
     &__appname{
         font-size: 12px;
         font-weight: 600;
