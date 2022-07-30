@@ -1,7 +1,7 @@
 /**
- * function to format single member item
- * @param {member object} task
- * @returns formatted member obj
+ * Mam singe member from server to client
+ * @param {object} object with member info
+ * @returns {object} mapped member
  */
 
 export const mapMemberFromServerToClient = (member) => ({
@@ -13,10 +13,11 @@ export const mapMemberFromServerToClient = (member) => ({
 });
 
 /**
- * function to map members
- * @param {Members array} tasks
- * @returns formatted members
+ * Map members array from server to client
+ * @param {array} members array
+ * @returns {array} mapped members
  */
+
 export const mapMembersFromServerToClient = (members) =>
   members.map((member) => mapMemberFromServerToClient(member));
 
