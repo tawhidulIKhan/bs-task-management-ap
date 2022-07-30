@@ -4,7 +4,7 @@ import { mapAuthFromServerToClient } from './mapper';
 
 const login = async (request) => {
     const response = await axios.post(endpoints.LOGIN_API, {
-        email: request.username,
+        username: request.username,
         password: request.password
     })
     if(response){
