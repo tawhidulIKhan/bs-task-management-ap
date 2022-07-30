@@ -8,7 +8,7 @@ const reducers = combineReducers({
 });
 
 const persistConfig = {
-  key: 'test-bs-state',
+  key: 'bs-state',
   storage,
 };
 
