@@ -47,7 +47,7 @@ const getAll = async () => {
 
 /**
  * Create new member
- * @param {object} object with user input values
+ * @param {object} object with name, email
  * @returns {object} data
  */
 
@@ -68,7 +68,7 @@ const create = async (request) => {
 
 /**
  * Update member
- * @param {object} object with user input values
+ * @param {object} object with id, name, email
  * @returns {object} data
  */
 

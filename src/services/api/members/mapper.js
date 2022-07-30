@@ -21,6 +21,12 @@ export const mapMemberFromServerToClient = (member) => ({
 export const mapMembersFromServerToClient = (members) =>
   members.map((member) => mapMemberFromServerToClient(member));
 
+/**
+ * Map members meta from server to client
+ * @param {object} meta object
+ * @returns {object} mapped meta object
+ */
+
 export const mapMeta = (meta) => ({
   currentPage: meta.current_page,
   total: meta.total,
