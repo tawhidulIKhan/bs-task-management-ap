@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import Button from '../../button/Button';
 import Error from '../../components/error/Error';
 import endpoints from '../../config/endpoints';
 import AuthManager from '../../services/api/auth/request';
@@ -13,6 +14,7 @@ function LoginContent(props) {
     password: '',
   });
   const [errors, setErrors] = useState([]);
+  const [loading, setLoading] = useState(false);
   const nameHandle = (ev) => {
     setUserInput({
       ...userInput,
@@ -29,14 +31,17 @@ function LoginContent(props) {
 
   const login = async (ev) => {
     ev.preventDefault();
+    setLoading(true);
     try {
       const response = await AuthManager.login(userInput);
       props.setSessionAction(response.data);
+      setLoading(false);
     } catch (error) {
       console.error(error);
       if (error.response.data.error) {
         setErrors([error.response.data.error]);
       }
+      setLoading(false);
     }
   };
 
@@ -63,9 +68,7 @@ function LoginContent(props) {
               placeholder="Enter your password"
             />
           </p>
-          <button onClick={login} className="btn--primary">
-            Login
-          </button>
+          <Button loading={loading} onClick={login} label="Login" />
         </form>
         <p>
           Do not have an account?{' '}
