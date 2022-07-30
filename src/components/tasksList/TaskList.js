@@ -50,7 +50,6 @@ export default function TaskList() {
             <thead>
               <tr>
                 <th>Title</th>
-                <th>Description</th>
                 <th>Assigned to</th>
                 <th>Creation date</th>
               </tr>
@@ -63,7 +62,6 @@ export default function TaskList() {
                       {task.title}
                     </Link>
                   </td>
-                  <td>{task.description || '-'}</td>
                   <td>{task.assignedMember}</td>
                   <td>{task.createdAt}</td>
                 </tr>
