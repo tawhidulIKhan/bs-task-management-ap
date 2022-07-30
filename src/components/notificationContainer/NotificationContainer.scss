@@ -1,0 +1,15 @@
+.notification__container{
+    position: fixed;
+    right: 40px;
+    top:100px;
+    background: #fff;
+    width:220px;
+    min-height: 50px;
+    display: flex;
+    align-items: center;
+    border-radius: 0px 5px 5px 0px;
+    justify-content: center;
+    box-shadow: 0px 0px 10px 10px rgba(0,0,0,.04);
+    border-left: 5px solid rgb(84, 209, 0);
+    display: none;
+}

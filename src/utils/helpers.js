@@ -1,7 +1,5 @@
-import moment from "moment";
 import store from "../store";
 import { getSessionToken } from "../store/session/actions";
-import { toast } from 'react-toastify';
 
 export const getAxiosHeader = () => {
     const token = getSessionToken(store.getState());
@@ -12,5 +10,12 @@ export const getAxiosHeader = () => {
 }
 
 export const successMsg = (msg) => {
-    toast.success(msg)
+    const container = document.querySelector("#notification-container");
+    const notification = `<div>${msg}</div>`;
+    container.innerHTML = notification;
+    container.style.display = 'flex';
+    setTimeout(() => {
+        container.innerHTML = '';
+        container.style.display = 'none';    
+    }, 2000)
 };
