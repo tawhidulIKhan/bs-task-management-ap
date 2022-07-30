@@ -5,6 +5,7 @@ import MemberManager from '../../services/api/members/request';
 import { successMsg } from '../../utils/helpers';
 import Error from '../error/Error';
 import Loading from '../loading/Loading';
+import MemberTasks from '../memberTasks/MemberTasks';
 import PageHeader from '../pageHeader/PageHeader';
 import './MemberForm.scss';
 const INITIAL_USER_INPUT = {
@@ -103,6 +104,7 @@ export default function MemberForm(props) {
               <input onChange={emailHandler} className='input-field' placeholder='Enter member email' value={userInput.email} />
               {errors?.email ? <Error error={errors.email} /> : null}
             </p>
+            {member ? <MemberTasks tasks={member.tasks} /> : null}
             <div className='memberform__actions'>
               <button onClick={submitForm} className='btn--primary'>
                 {member ? 'Update' : 'Create'}
