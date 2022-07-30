@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import Button from '../button/Button';
 import Error from '../components/error/Error';
 import endpoints from '../config/endpoints';
 import AuthManager from '../services/api/auth/request';
@@ -14,6 +15,7 @@ const INITIAL_USER_INPUT = {
 function Register() {
   const [userInput, setUserInput] = useState(INITIAL_USER_INPUT);
   const [errors, setErrors] = useState([]);
+  const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
   const nameHandle = (ev) => {
     setUserInput({
@@ -44,8 +46,10 @@ function Register() {
 
   const register = async (ev) => {
     ev.preventDefault();
+    setLoading(true);
     try {
       const response = await AuthManager.register(userInput);
+      setLoading(false);
       if (response.data) {
         navigate(endpoints.LOGIN);
       }
@@ -54,6 +58,7 @@ function Register() {
       if (error.response.data.errors) {
         setErrors(error.response.data.errors);
       }
+      setLoading(false);
     }
   };
 
@@ -97,9 +102,7 @@ function Register() {
               placeholder="Enter your password again"
             />
           </p>
-          <button onClick={register} className="btn--primary">
-            Register
-          </button>
+          <Button loading={loading} onClick={register} label="Register" />
         </form>
         <p className="auth__extra">
           Already have an account?
