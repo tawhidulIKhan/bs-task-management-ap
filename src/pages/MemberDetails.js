@@ -28,7 +28,7 @@ export default function MemberDetails() {
   }
   return (
     <Layout>
-      {loading ? <Loading /> : <MemberForm task={member} />}
+      {loading ? <Loading /> : <MemberForm member={member} />}
    </Layout>
   )
 }
