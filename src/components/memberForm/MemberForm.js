@@ -4,7 +4,6 @@ import endpoints from '../../config/endpoints';
 import MemberManager from '../../services/api/members/request';
 import { successMsg } from '../../utils/helpers';
 import Error from '../error/Error';
-import Loading from '../loading/Loading';
 import MemberTasks from '../memberTasks/MemberTasks';
 import PageHeader from '../pageHeader/PageHeader';
 import './MemberForm.scss';
@@ -15,15 +14,9 @@ const INITIAL_USER_INPUT = {
 export default function MemberForm(props) {
   const { member } = props;
   const [errors, setErrors] = useState(null);
-  const [loading, setLoading] = useState(true);
   const [userInput, setUserInput] = useState(INITIAL_USER_INPUT)
   const navigate = useNavigate();
-  useEffect(() => {
-    setTimeout(() => {
-      setLoading(false);
-    }, 300)
-  }, [])
-
+  
   useEffect(() => {
     setUserInput({...member})
   }, [member])
@@ -84,7 +77,6 @@ export default function MemberForm(props) {
   }
 
   return (
-    loading ? <Loading /> : (
     <div className='memberform form'>
       <div className='container-xs'>
         <PageHeader
@@ -121,6 +113,5 @@ export default function MemberForm(props) {
         </div>
       </div>
     </div>
-    )
   )
 }
