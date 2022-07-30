@@ -21,8 +21,8 @@ whether you go to live link or check it locally use this credentials:
 Or, you may sign up and use your credentials also to check this app
 
 ### App has backend dependency to run
-A backend rest API is used to run this app including authentication system.
-If you want to check backend REST API app Github Repo then the link is below:
+A backend rest API is used to run this app including authentication system. the backend api is already added to this frontend app, you no need to do extra thing, but
+if you want to check backend REST API app Github Repo then the link is below:
 [Backend Github Link ](https://github.com/tawhidulIKhan/bs-task-management-ap-api)
 
 ## Thank You
