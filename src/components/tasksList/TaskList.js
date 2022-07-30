@@ -43,7 +43,9 @@ export default function TaskList() {
         btnLink={endpoints.TASKS_CREATE}
       />
       <div className="page__content">
-        {tasks.length ? (
+        {loading ? (
+          <Loading />
+        ) : (
           <table className="table">
             <thead>
               <tr>
@@ -68,8 +70,6 @@ export default function TaskList() {
               ))}
             </tbody>
           </table>
-        ) : (
-          <Loading />
         )}
 
         {!tasks.length && !loading ? (
