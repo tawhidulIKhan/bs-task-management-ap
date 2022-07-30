@@ -6,13 +6,13 @@ import TaskForm from '../components/taskForm/TaskForm';
 import TaskManager from '../services/api/tasks/request';
 
 export default function TaskDetails() {
-  const {id} = useParams();
-  const [task, setTask] = useState(null)
+  const { id } = useParams();
+  const [task, setTask] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetchTask(id)
-  }, [id])
-  
+    fetchTask(id);
+  }, [id]);
+
   const fetchTask = async (id) => {
     try {
       setLoading(true);
@@ -25,11 +25,7 @@ export default function TaskDetails() {
       console.error(error);
       setLoading(false);
     }
-  }
+  };
 
-  return (
-    <Layout>
-      {loading ? <Loading /> : <TaskForm task={task} />}
-    </Layout>
-  )
+  return <Layout>{loading ? <Loading /> : <TaskForm task={task} />}</Layout>;
 }

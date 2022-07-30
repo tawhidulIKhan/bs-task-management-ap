@@ -6,13 +6,13 @@ import MemberForm from '../components/memberForm/MemberForm';
 import MemberManager from '../services/api/members/request';
 
 export default function MemberDetails() {
-  const {id} = useParams();
-  const [member, setMember] = useState(null)
+  const { id } = useParams();
+  const [member, setMember] = useState(null);
   const [loading, setLoading] = useState(false);
   useEffect(() => {
-    fetchMember(id)
-  }, [id])
-  
+    fetchMember(id);
+  }, [id]);
+
   const fetchMember = async (id) => {
     try {
       setLoading(true);
@@ -25,10 +25,6 @@ export default function MemberDetails() {
       console.error(error);
       setLoading(false);
     }
-  }
-  return (
-    <Layout>
-      {loading ? <Loading /> : <MemberForm member={member} />}
-   </Layout>
-  )
+  };
+  return <Layout>{loading ? <Loading /> : <MemberForm member={member} />}</Layout>;
 }

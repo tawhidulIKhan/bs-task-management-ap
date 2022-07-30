@@ -11,18 +11,18 @@ export const mapTaskFromServerToClient = (task) => ({
   createdAt: task.created_at,
   assignedTo: task.assigned?.id,
   assignedMember: task.assigned?.name
-})
+});
 
 /**
  * function to map tasks
- * @param {Tasks array} tasks 
+ * @param {Tasks array} tasks
  * @returns formatted tasks
  */
-export const mapTasksFromServerToClient = (tasks) => 
-  tasks.map(task => mapTaskFromServerToClient(task))
+export const mapTasksFromServerToClient = (tasks) =>
+  tasks.map((task) => mapTaskFromServerToClient(task));
 
 export const mapMeta = (meta) => ({
-   currentPage: meta.current_page,
-   total: meta.total,
-   perPage: meta.per_page,
-})
+  currentPage: meta.current_page,
+  total: meta.total,
+  perPage: meta.per_page
+});

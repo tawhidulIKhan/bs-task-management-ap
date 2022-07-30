@@ -1,4 +1,4 @@
-import React from 'react'
+import React from 'react';
 import LoginContent from '../container/auth/Login';
 
 export default function Login() {
@@ -6,5 +6,5 @@ export default function Login() {
     <div>
       <LoginContent />
     </div>
-  )
+  );
 }

@@ -4,10 +4,10 @@
  * @returns formatted login obj
  */
 
- export const mapAuthFromServerToClient = (data) => ({
-    token: data.token,
-    user: {
-        ...data.user,
-        username: data.user.name
-    }
-})
+export const mapAuthFromServerToClient = (data) => ({
+  token: data.token,
+  user: {
+    ...data.user,
+    username: data.user.name
+  }
+});

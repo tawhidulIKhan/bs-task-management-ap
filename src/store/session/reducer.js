@@ -1,13 +1,10 @@
 import { RESET_SESSION, SET_SESSION } from './actions';
 const initialState = {
-  user:null,
-  token:''
-}
+  user: null,
+  token: ''
+};
 
-export default function reducer(
-  state = initialState,
-  {payload, type}
-){
+export default function reducer(state = initialState, { payload, type }) {
   switch (type) {
     case SET_SESSION:
       return {
@@ -21,7 +18,7 @@ export default function reducer(
         token: '',
         user: null
       };
-      default:
+    default:
       return state;
   }
 }
