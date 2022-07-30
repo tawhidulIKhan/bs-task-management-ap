@@ -22,6 +22,12 @@ export const mapTaskFromServerToClient = (task) => ({
 export const mapTasksFromServerToClient = (tasks) =>
   tasks.map((task) => mapTaskFromServerToClient(task));
 
+/**
+ * Map tasks meta from server to client
+ * @param {object} meta object
+ * @returns {object} mapped meta object
+ */
+
 export const mapMeta = (meta) => ({
   currentPage: meta.current_page,
   total: meta.total,
