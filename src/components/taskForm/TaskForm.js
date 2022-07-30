@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import Button from '../../button/Button';
 import endpoints from '../../config/endpoints';
 import MemberManager from '../../services/api/members/request';
 import TaskManager from '../../services/api/tasks/request';
@@ -19,6 +20,7 @@ export default function TaskForm(props) {
   const [errors, setErrors] = useState(null);
   const [members, setMembers] = useState([]);
   const [userInput, setUserInput] = useState(INITIAL_USER_INPUT);
+  const [loading, setLoading] = useState(false);
 
   useEffect(() => {
     fetchMembers();
@@ -39,31 +41,42 @@ export default function TaskForm(props) {
 
   const submitForm = (ev) => {
     ev.preventDefault();
+    if (!userInput.title) {
+      setErrors({ title: ['Enter member title'] });
+      return;
+    }
     task ? updateTask() : createTask();
   };
 
   const createTask = async () => {
     try {
+      setLoading(true);
       const response = await TaskManager.create(userInput);
       if (response.data.errors) {
         setErrors(response.data.errors);
+        setLoading(false);
         return;
       }
+      setLoading(false);
       navigate(endpoints.TASKS);
     } catch (error) {
+      setLoading(false);
       console.error(error);
     }
   };
 
   const updateTask = async () => {
     try {
+      setLoading(true);
       await TaskManager.update({
         ...userInput,
         id: task.id,
       });
       successMsg('Task Updated');
+      setLoading(false);
     } catch (error) {
       console.error(error);
+      setLoading(false);
     }
   };
 
@@ -145,9 +158,11 @@ export default function TaskForm(props) {
               </select>
             </p>
             <div className="taskform__actions">
-              <button onClick={submitForm} className="btn--primary">
-                {task ? 'Update' : 'Create'}
-              </button>
+              <Button
+                loading={loading}
+                onClick={submitForm}
+                label={task ? 'Update' : 'Create'}
+              />
               {task ? (
                 <button onClick={deleteTask} className="btn--danger">
                   Delete
