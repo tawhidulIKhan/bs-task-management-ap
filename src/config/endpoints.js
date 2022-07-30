@@ -2,6 +2,7 @@ const API_ENDPOINT = process.env.REACT_APP_API_URL;
 
 const endpointsLocal = {
   LOGIN: '/login',
+  REGISTER: '/register',
   DASHBOARD: '/',
   TASKS: '/tasks',
   TASKS_DETAILS: '/tasks/:id',
@@ -13,6 +14,7 @@ const endpointsLocal = {
 
 const endpointsServer = {
   LOGIN_API: `${API_ENDPOINT}/login`,
+  REGISTER_API: `${API_ENDPOINT}/register`,
   TASKS_API: `${API_ENDPOINT}/tasks`,
   TASKS_DETAILS_API: `${API_ENDPOINT}/tasks/:id`,
   TASKS_UPDATE_API: `${API_ENDPOINT}/tasks/:id`,

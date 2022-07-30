@@ -6,25 +6,34 @@ import Login from './pages/Login';
 import MemberCreate from './pages/MemberCreate';
 import MemberDetails from './pages/MemberDetails';
 import Members from './pages/Members';
+import Register from './pages/Register';
 import TaskCreate from './pages/TaskCreate';
 import TaskDetails from './pages/TaskDetails';
 import Tasks from './pages/Tasks';
 
 const routes = [
   {
-    path: endpoints.DASHBOARD,
-    element: (
-      <PrivateRoute>
-        <Dashboard />
-      </PrivateRoute>
-    ),
-  },
-  {
     path: endpoints.LOGIN,
     element: (
       <GuestRoute>
         <Login />
       </GuestRoute>
+    ),
+  },
+  {
+    path: endpoints.REGISTER,
+    element: (
+      <GuestRoute>
+        <Register />
+      </GuestRoute>
+    ),
+  },
+  {
+    path: endpoints.DASHBOARD,
+    element: (
+      <PrivateRoute>
+        <Dashboard />
+      </PrivateRoute>
     ),
   },
   {
