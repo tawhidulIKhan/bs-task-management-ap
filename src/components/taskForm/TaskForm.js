@@ -44,10 +44,9 @@ export default function TaskForm(props) {
     task ? updateTask() : createTask()
   }
 
-  const createTask = async (ev) => {
+  const createTask = async () => {
     try {
       const response = await TaskManager.create(userInput);
-      console.log(response)
       if(response.data.errors){
         setErrors(response.data.errors);
         return;
@@ -58,7 +57,7 @@ export default function TaskForm(props) {
     }
   }
 
-  const updateTask = async (ev) => {
+  const updateTask = async () => {
     try {
       await TaskManager.update({
         ...userInput,
@@ -74,7 +73,7 @@ export default function TaskForm(props) {
     setUserInput({...userInput, title: ev.target.value})
   
     const descriptionHandler =(ev) => 
-    setUserInput({...userInput, descriptionHandler: ev.target.value})
+    setUserInput({...userInput, description: ev.target.value})
   
     const memberHandler =(ev) => 
     setUserInput({...userInput, assignedTo: ev.target.value})
@@ -117,6 +116,7 @@ export default function TaskForm(props) {
             <p className="form__item">
               <label className='form__item__label'>Member</label>
               <select onChange={memberHandler} className='input-select'>
+                <option selected>Select a member</option>
                 {members.map(member => <option selected={userInput.assignedTo === member.id} key={member.id} value={member.id}>{member.name}</option>)}
               </select>
             </p>
