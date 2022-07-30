@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import { Link } from 'react-router-dom'
 import endpoints from '../../config/endpoints';
 import MemberManager from '../../services/api/members/request';
+import NotFound from '../notFound/NotFound';
 import Pagination from '../pagination/Pagination';
 
 export default function MemberList() {
@@ -25,6 +26,7 @@ export default function MemberList() {
   const onPaginate = (currentPage) => {
     fetchMembers({ currentPage });
   }
+
   return (
     <div className='container'>
       <div className='page__header'>
@@ -54,12 +56,15 @@ export default function MemberList() {
           ))}
           </tbody>
         </table>
+        {!members.length ? <NotFound message="No Members Found" /> : null}
+        {!members.length ?         
         <Pagination 
           onClick={onPaginate} 
           perPage={meta.perPage} 
           total={meta.total} 
           currentPage={meta.currentPage}
-        />
+        /> : null
+        }   
       </div>
     </div>
   )
