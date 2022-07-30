@@ -4,12 +4,10 @@
  * @returns formatted task obj
  */
 
-import { dateFormat } from "../../../utils/helpers"
-
 export const mapTaskFromServerToClient = (task) => ({
   id: task.id,
   title: task.title,
-  createdAt: dateFormat(task.created_at),
+  createdAt: task.created_at,
   assignedTo: task.assigned?.id,
   assignedMember: task.assigned?.name
 })
