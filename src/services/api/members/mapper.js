@@ -9,6 +9,7 @@ export const mapMemberFromServerToClient = (member) => ({
   name: member.name,
   email: member.email || '-',
   tasks: member.tasks,
+  totalTask: member.tasks?.length || 0,
   createdAt: member.created_at,
 });
 
