@@ -11,9 +11,12 @@ I deply it on my demo hosting, so live demo link is avilable
 - development server will run http://localhost:3000 on your browser
 
 ## Login
-This app uses a backend REST API, where user is already created, whether you go to live link or check it locally use this credentials:
+This app uses a backend REST API, where user is already created, 
+whether you go to live link or check it locally use this credentials:
+
 `username: tawhid`
 `password: 12345678`
+
 Or, you may sign up and use your credentials
 
 ### App has backend dependency to run
