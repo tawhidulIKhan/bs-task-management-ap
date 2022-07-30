@@ -142,7 +142,7 @@ export default function TaskForm(props) {
               ) : null}
             </p>
             <p className="form__item">
-              <label className="form__item__label">Member</label>
+              <label className="form__item__label">Assign to</label>
               <select onChange={memberHandler} className="input-select">
                 <option selected>Select a member</option>
                 {!members.length ? (
