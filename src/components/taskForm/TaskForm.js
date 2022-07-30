@@ -117,6 +117,7 @@ export default function TaskForm(props) {
               <label className='form__item__label'>Member</label>
               <select onChange={memberHandler} className='input-select'>
                 <option selected>Select a member</option>
+                {!members.length ? <option disabled>No member found, please create member first</option> : null}
                 {members.map(member => <option selected={userInput.assignedTo === member.id} key={member.id} value={member.id}>{member.name}</option>)}
               </select>
             </p>
