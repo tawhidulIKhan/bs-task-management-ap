@@ -7,6 +7,7 @@ import { successMsg } from '../../utils/helpers';
 import Error from '../error/Error';
 import PageHeader from '../pageHeader/PageHeader';
 import './TaskForm.scss';
+
 const INITIAL_USER_INPUT = {
   title: '',
   description: '',
@@ -14,10 +15,11 @@ const INITIAL_USER_INPUT = {
 };
 export default function TaskForm(props) {
   const { task } = props;
+  const navigate = useNavigate();
   const [errors, setErrors] = useState(null);
   const [members, setMembers] = useState([]);
   const [userInput, setUserInput] = useState(INITIAL_USER_INPUT);
-  const navigate = useNavigate();
+
   useEffect(() => {
     fetchMembers();
   }, []);
@@ -34,6 +36,7 @@ export default function TaskForm(props) {
       console.error(error);
     }
   };
+
   const submitForm = (ev) => {
     ev.preventDefault();
     task ? updateTask() : createTask();
