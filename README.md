@@ -15,9 +15,10 @@ This app uses a backend REST API, where user is already created,
 whether you go to live link or check it locally use this credentials:
 
 `username: tawhid`
+
 `password: 12345678`
 
-Or, you may sign up and use your credentials
+Or, you may sign up and use your credentials also to check this app
 
 ### App has backend dependency to run
 A backend rest API is used to run this app including authentication system.
