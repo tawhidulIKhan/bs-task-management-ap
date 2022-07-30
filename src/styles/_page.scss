@@ -1,0 +1,17 @@
+.page{
+    &__content{
+      background: #fff;
+      padding: 30px;
+      border-radius: 5px;
+    }
+    &__header{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+      &__title{
+        font-size: 20px;
+      }
+    }
+  }

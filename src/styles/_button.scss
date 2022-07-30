@@ -1,0 +1,29 @@
+
+.btn{
+    &--primary{
+      background: var(--primary-color);
+      color: var(--primary-text-color);
+      border:none;
+      border-radius: 50px;
+      padding: 12px 47px;
+      cursor: pointer;
+    }
+    &--link{
+      background: var(--primary-color);
+      color: var(--primary-text-color);
+      border:none;
+      border-radius: 50px;
+      padding: 12px 20px;
+      font-size: 14px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+    &--danger{
+      background: var(--danger-color);
+      color: var(--primary-text-color);
+      border:none;
+      border-radius: 50px;
+      padding: 12px 47px;
+      cursor: pointer;
+    }
+  }
